@@ -7,7 +7,7 @@ import {
   LocationObject,
 } from "expo-location"; //permissao para acessar a localizacao do usuario
 import { useEffect, useState } from "react";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 export default function App() {
   const [location, setLocation] = useState<LocationObject | null>(null);
@@ -27,7 +27,24 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.mapa} />
+      {location && (
+        <MapView
+          initialRegion={{
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          }}
+          style={styles.mapa}
+        >
+          <Marker
+            coordinate={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+            }}
+          />
+        </MapView>
+      )}
     </View>
   );
 }
