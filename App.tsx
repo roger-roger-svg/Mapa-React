@@ -7,6 +7,7 @@ import {
   LocationObject,
 } from "expo-location"; //permissao para acessar a localizacao do usuario
 import { useEffect, useState } from "react";
+import MapView from "react-native-maps";
 
 export default function App() {
   const [location, setLocation] = useState<LocationObject | null>(null);
@@ -24,5 +25,9 @@ export default function App() {
     requestLocationPermissions();
   }, []);
 
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <MapView style={styles.mapa} />
+    </View>
+  );
 }

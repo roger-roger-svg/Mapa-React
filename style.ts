@@ -7,4 +7,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  mapa: {
+    flex: 1,
+    width: "100%",
+  },
 });
