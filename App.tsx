@@ -57,18 +57,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerBotoes}>
-        {wondersCoords.map((wonder, index) => (
-          <TouchableHighlight
-            key={index}
-            onPress={() => goToWonder(wonder.latitude, wonder.longitude)}
-          >
-            <View style={styles.Botoes}>
-              <Text>{`${wonder.flagIcon} Ir para ${wonder.name}`}</Text>
-            </View>
-          </TouchableHighlight>
-        ))}
-      </View>
       {location && markerCoords && (
         <MapView
           region={{
@@ -82,6 +70,18 @@ export default function App() {
           {location && markerCoords && <Marker coordinate={markerCoords} />}
         </MapView>
       )}
+      <View style={styles.containerBotoes}>
+        {wondersCoords.map((wonder, index) => (
+          <TouchableHighlight
+            key={index}
+            onPress={() => goToWonder(wonder.latitude, wonder.longitude)}
+          >
+            <View style={styles.Botoes}>
+              <Text>{`${wonder.flagIcon} Ir para ${wonder.name}`}</Text>
+            </View>
+          </TouchableHighlight>
+        ))}
+      </View>
     </View>
   );
 }
