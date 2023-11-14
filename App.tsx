@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Button, View, FlatList, TouchableOpacity } from "react-native";
+import {
+  Button,
+  View,
+  FlatList,
+  TouchableOpacity,
+  TouchableHighlight,
+  Text,
+} from "react-native";
 import MapView, { Marker, Region, LatLng } from "react-native-maps";
 import * as Location from "expo-location";
-
+import wondersData from "./WonderData";
 import { styles } from "./style";
 
 export default function App() {
@@ -14,51 +21,7 @@ export default function App() {
 
   const [initialRegion, setInitialRegion] = useState<Region | null>(null);
 
-  const [wondersCoords, setWondersCoords] = useState([
-    {
-      name: "Cristo Redentor",
-      latitude: -22.9519,
-      longitude: -43.2105,
-      flagIcon: "🇧🇷",
-    },
-    {
-      name: "Grande Muralha da China",
-      latitude: 40.4319,
-      longitude: 116.5704,
-      flagIcon: "🇨🇳",
-    },
-    {
-      name: "Machu Picchu",
-      latitude: -13.2263,
-      longitude: -72.4973,
-      flagIcon: "🇵🇪",
-    },
-    {
-      name: "Chichén Itzá",
-      flagIcon: "🇲🇽",
-      latitude: 20.6843,
-      longitude: -88.5678,
-    },
-
-    {
-      name: "Coliseu",
-      flagIcon: "🇮🇹",
-      latitude: 41.8902,
-      longitude: 12.4922,
-    },
-    {
-      name: "Taj Mahal",
-      flagIcon: "🇮🇳",
-      latitude: 27.1751,
-      longitude: 78.0421,
-    },
-    {
-      name: "Ruínas de Petra",
-      flagIcon: "🇯🇴",
-      latitude: 30.3285,
-      longitude: 35.4428,
-    },
-  ]);
+  const [wondersCoords, setWondersCoords] = useState(wondersData);
 
   const requestLocationPermissions = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -96,11 +59,14 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.containerBotoes}>
         {wondersCoords.map((wonder, index) => (
-          <Button
+          <TouchableHighlight
             key={index}
-            title={`${wonder.flagIcon} Ir para ${wonder.name}`}
             onPress={() => goToWonder(wonder.latitude, wonder.longitude)}
-          />
+          >
+            <View style={styles.Botoes}>
+              <Text>{`${wonder.flagIcon} Ir para ${wonder.name}`}</Text>
+            </View>
+          </TouchableHighlight>
         ))}
       </View>
       {location && markerCoords && (

@@ -16,5 +16,12 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "black",
+    width: "100%",
+  },
+  Botoes: {
+    backgroundColor: "gold",
+    margin: 10,
+    padding: 3,
+    borderRadius: 5,
   },
 });
