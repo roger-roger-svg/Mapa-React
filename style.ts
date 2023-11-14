@@ -11,4 +11,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
   },
+  containerBotoes: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "black",
+  },
 });
