@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, View } from "react-native";
+import { Button, View, FlatList, TouchableOpacity } from "react-native";
 import MapView, { Marker, Region, LatLng } from "react-native-maps";
 import * as Location from "expo-location";
 
